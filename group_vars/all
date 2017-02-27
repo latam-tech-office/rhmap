@@ -1,9 +1,36 @@
+# Install RHMAP 4.2 on OpenShift 
+# https://access.redhat.com/documentation/en-us/red_hat_mobile_application_platform/4.2/html-single/installing_rhmap/
+#
+# Red Hat Subscription Manager Information
+# for Red Hat Mobile Application Platform 4.2
+#
+# Be sure you have all your hosts subscribed, before running those playbooks
+subscription_manager_repositories:
+      - rhel-7-server-rhmap-4.2-rpms
+subscription_manager_templates:
+      - rhmap-fh-openshift-templates
+      - fh-system-dump-tool
+
+# Information specific to RHMAP Core and MBaaS
 project_core: "rhmap-core"
 selector_core: "rhmap=core"
 project_mbaas: "rhmap-mbaas"
 selector_mbaas: "rhmap=mbaas" 
 directory_rhmap: /opt/rhmap/templates
 project_admin_user: demo
+
+# Specific variables used into RHMAP Core
+smtp_server: "localhost"
+smtp_username: "username"
+smtp_password: "password"
+smtp_from_address: "nagios@example.com"
+admin_email:  "root@localhost"
+smtp_port: "25"
+smtp_auth: "false"
+smtp_tls: "false"
+email_replyto: "noreply@localhost"
+builder_android_service_host: "<androidbuildfarmurl>"
+builder_iphone_service_host: "<iphonebuildfarmurl>"
 
 # Red Hat Subscription Manager Information
 # for Red Hat Mobile Application Platform 4.2

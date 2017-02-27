@@ -1,0 +1,28 @@
+- name: Check if variable is defined{{ ':'}}  subscription_manager_repositories
+  fail: msg="Variable 'subscription_manager_repositories' wasn't defined"
+  when: subscription_manager_repositories is not defined
+
+- name: Check if variable is defined{{ ':' }} subscription_manager_template
+  fail: msg="Variable 'subscription_manager_templates' wasn't defined" 
+  when: subscription_manager_templates is not defined
+
+- name: Enable all the necessary repositories 
+  command: subscription-manager repos --enable={{ item }}
+  with_items: "{{ subscription_manager_repositories }}"
+  tags:
+     - subscribe
+
+- name: Update all packages based on the latest repositories
+  yum: name='*' state=latest update_cache=yes
+  tags:
+     - subscribe
+
+- name: Installing RHSM plugin subscription-manager-plugin-container
+  yum: name="subscription-manager-plugin-container" state=present
+  tags:
+     - subscribe
+
+- name: Running rhsmcertd-worker to refresh the local certificate store
+  command: /usr/libexec/rhsmcertd-worker
+  tags:
+     - subscribe

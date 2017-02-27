@@ -1,20 +1,21 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Installing Red Hat Mobile Application Platform 4.2
+- name: Subscribe all OpenShift Hosts to RHMAP Repositories
+  hosts: rhmap-hosts
+  roles: 
+    - subscribe
+
+- name: Install RHMAP Templates in this host
   hosts: localhost
   connection: local
-  vars: 
-     smtp_server: "localhost"
-     smtp_username: "username"
-     smtp_password: "password"
-     smtp_from_address: "nagios@example.com"
-     admin_email:  "root@localhost"
-     smtp_port: "25"
-     smtp_auth: "false"
-     smtp_tls: "false"
-     email_replyto: "noreply@localhost"
-     builder_android_service_host: "<androidbuildfarmurl>"
-     builder_iphone_service_host: "<iphonebuildfarmurl>"
+  tasks:
+     - name: Installing all the necessary templates
+       yum: name={{ item }} state=present
+       with_items: "{{ subscription_manager_templates }}"
+       tags:
+          - templates  
+
+- name: Install both RHMAP Core and MBaaS
   roles: 
      - core
      - mbaas
