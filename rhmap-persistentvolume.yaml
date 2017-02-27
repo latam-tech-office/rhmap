@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local1-5g-medium
+  spec:
+    capacity:
+      storage: 5Gi
+    accessModes:
+      - ReadWriteOnce
+    nfs:
+      server: 192.168.0.100
+      path: /var/storage/local1
+    persistentVolumeReclaimPolicy: Recycle
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local2-5g-medium
+  spec:
+    capacity:
+      storage: 5Gi
+    accessModes:
+      - ReadWriteOnce
+    nfs:
+      server: 192.168.0.100
+      path: /var/storage/local2
+    persistentVolumeReclaimPolicy: Recycle
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local3-5g-medium
+  spec:
+    capacity:
+      storage: 5Gi
+    accessModes:
+      - ReadWriteOnce
+    nfs:
+      server: 192.168.0.100
+      path: /var/storage/local3
+    persistentVolumeReclaimPolicy: Recycle
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local4-1g-small
+  spec:
+    capacity:
+      storage: 1Gi
+    accessModes:
+      - ReadWriteOnce
+    nfs:
+      server: 192.168.0.100
+      path: /var/storage/local4
+    persistentVolumeReclaimPolicy: Recycle
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local5-25g-large
+  spec:
+    capacity:
+      storage: 25Gi
+    accessModes:
+      - ReadWriteOnce
+    nfs:
+      server: 192.168.0.100
+      path: /var/storage/local5
+    persistentVolumeReclaimPolicy: Recycle
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local6-25g-large
+  spec:
+    capacity:
+      storage: 25Gi
+    accessModes:
+      - ReadWriteOnce
+    nfs:
+      server: 192.168.0.100
+      path: /var/storage/local6
+    persistentVolumeReclaimPolicy: Recycle

@@ -1,0 +1,16 @@
+project_core: "rhmap-core"
+selector_core: "rhmap=core"
+project_mbaas: "rhmap-mbaas"
+selector_mbaas: "rhmap=mbaas" 
+directory_rhmap: /opt/rhmap/templates
+project_admin_user: demo
+
+# Red Hat Subscription Manager Information
+# for Red Hat Mobile Application Platform 4.2
+# 
+# Be sure you have all your hosts subscribed, before running those playbooks
+subscription_manager_repositories:
+      - rhel-7-server-rhmap-4.2-rpms
+subscription_manager_templates:
+      - rhmap-fh-openshift-templates
+      - fh-system-dump-tool
