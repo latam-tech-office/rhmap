@@ -1,10 +1,14 @@
 - name: Check if variable is defined{{ ':'}}  subscription_manager_repositories
   fail: msg="Variable 'subscription_manager_repositories' wasn't defined"
   when: subscription_manager_repositories is not defined
+  tags:
+     - subscribe
 
 - name: Check if variable is defined{{ ':' }} subscription_manager_template
   fail: msg="Variable 'subscription_manager_templates' wasn't defined" 
   when: subscription_manager_templates is not defined
+  tags:
+     - subscribe
 
 - name: Enable all the necessary repositories 
   command: subscription-manager repos --enable={{ item }}

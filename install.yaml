@@ -16,6 +16,8 @@
           - templates  
 
 - name: Install both RHMAP Core and MBaaS
+  hosts: localhost
+  connection: local
   roles: 
      - core
      - mbaas

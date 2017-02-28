@@ -31,13 +31,3 @@ smtp_tls: "false"
 email_replyto: "noreply@localhost"
 builder_android_service_host: "<androidbuildfarmurl>"
 builder_iphone_service_host: "<iphonebuildfarmurl>"
-
-# Red Hat Subscription Manager Information
-# for Red Hat Mobile Application Platform 4.2
-# 
-# Be sure you have all your hosts subscribed, before running those playbooks
-subscription_manager_repositories:
-      - rhel-7-server-rhmap-4.2-rpms
-subscription_manager_templates:
-      - rhmap-fh-openshift-templates
-      - fh-system-dump-tool
